@@ -62,7 +62,9 @@ int add(int x, int y) // Variable types are declared in parameters. They are the
 
 void count_to_num(int num)
 {
-    if (num <= 25)
+    int maxCount = 100;
+
+    if (num <= maxCount)
     {
         std::cout << "Let's count to your number:" << std::endl;
         for(int count = 1; count <= num; ++count) // (initialized variable(s), condition to check, end statement)
@@ -76,6 +78,9 @@ void count_to_num(int num)
         // Use the debugger to trace through code and look for errors.
         }
         std::cout << std::endl;
+    } 
+    else {
+        std::cout << "Your number is to large to count to!" << std::endl;
     }
     
 }
