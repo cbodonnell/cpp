@@ -21,6 +21,7 @@ int main()
     int PlayerGuess;
     std::cin >> PlayerGuess;
     std::cout << PlayerGuess;
+    std::cout << std::endl;
 
 
     return 0;  
