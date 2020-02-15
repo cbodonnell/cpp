@@ -1,28 +1,65 @@
 #include <iostream>
+#include <ctime>
 
-int main()
+void PrintIntroduction(int Difficulty)
 {
-    std::cout << "You are a secret agent breaking into a secure server room...";
-    std::cout << std::endl;
-    std::cout << "You need to enter the correct codes to continue...";
-    
-    const int CodeA = 4; //defines integer a = 4
-    const int CodeB = 3; //defines integer b = 3
-    const int CodeC = 2; //defines integer c = 2
+    std::cout << "You are a secret agent breaking into a level " << Difficulty;
+    std::cout << "\nYou need to enter the correct codes to continue...\n\n";
+}
 
-    const int CodeSum = CodeA + CodeB + CodeB;
+bool PlayGame(int Difficulty)
+{
+    PrintIntroduction(Difficulty);
+    
+    const int CodeA = rand() % Difficulty + Difficulty; 
+    const int CodeB = rand() % Difficulty + Difficulty; 
+    const int CodeC = rand() % Difficulty + Difficulty; 
+
+    const int CodeSum = CodeA + CodeB + CodeC;
     const int CodeProduct = CodeA * CodeB * CodeC;
 
-    std::cout << std::endl;
-    std::cout << "There are 3 numbers in the code" << std::endl;
-    std::cout << "The codes add up to: " << CodeSum << std::endl;
-    std::cout << "The product multiplies a x b x c" << std::endl;
+    std::cout << "+ There are 3 numbers in the code";
+    std::cout << "\n+ The codes add up to: " << CodeSum;
+    std::cout << "\n+ The product multiplies to: " << CodeProduct << std::endl;
     
-    int PlayerGuess;
-    std::cin >> PlayerGuess;
-    std::cout << PlayerGuess;
-    std::cout << std::endl;
+    int GuessA, GuessB, GuessC;
+    std::cin >> GuessA >> GuessB >> GuessC;
 
+    int GuessSum = GuessA + GuessB + GuessC;
+    int GuessProduct = GuessA * GuessB * GuessC;
 
+    if (GuessSum == CodeSum && GuessProduct == CodeProduct)
+    {
+        std::cout << "\nCongrats Bubsie you can move on to the next level\n\n";
+        return true;
+    }
+    else 
+    {
+        std::cout << "\nWooooW Bubsie slow it down for papa, you are going to need to retry this level\n\n";
+        return false;
+    }
+}
+
+int main()
+{ 
+    srand(time(NULL)); // Create new random sequence based on time of day
+    
+    int LevelDifficulty = 1;
+    const int MaxDifficulty = 5;
+
+    while (LevelDifficulty <= MaxDifficulty) // Loop game until max level reached
+    {
+        bool bLevelComplete = PlayGame (LevelDifficulty);
+        std::cin.clear(); // Clears any errors
+        std::cin.ignore(); // Discards the buffer
+
+        if (bLevelComplete)
+        {
+            ++LevelDifficulty;
+        }
+        
+    }
+
+    std::cout << "***Congrats Bubsie you have succesfully busted!***";
     return 0;  
 }
