@@ -18,7 +18,7 @@ int main(int argc, char **argv)
     {
         int num = atoi(argv[1]);
         int numDoubled = num * 2;
-        std::cout << numDoubled;    
+        std::cout << numDoubled << std::endl;    
     }
 
     return 0;
