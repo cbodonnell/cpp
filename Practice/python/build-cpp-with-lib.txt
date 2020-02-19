@@ -1,0 +1,1 @@
+cl /I C:\Users\codonnell\applications\vcpkg\installed\x86-windows\include\python3.7 runPy.cpp C:\Users\codonnell\applications\vcpkg\installed\x86-windows\lib\python37.lib
