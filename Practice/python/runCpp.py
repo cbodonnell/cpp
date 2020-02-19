@@ -11,7 +11,7 @@ def main():
     user_input = input('Enter an integer: ')
     if RepresentsInt(user_input):
         num = int(user_input)
-        args = ("./double.out %i" % num).split()
+        args = ("./double.exe %i" % num).split()
         popen = subprocess.Popen(args, stdout=subprocess.PIPE)
         popen.wait()
         output = popen.stdout.read()
